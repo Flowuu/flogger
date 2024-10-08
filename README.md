@@ -27,15 +27,15 @@ console.log("This is flogger");
 
 console.timestamp();
 
-console.log(logLevel::INFO,          "This is log with color INFO");
-console.log(logLevel::WARNING,       "This is log with color WARNING");
-console.log(logLevel::ERR,           "This is log with color ERR\n\n");
+console.log(logLevel::RED,          "This is log with color RED");
+console.log(logLevel::LIGHTGREEN,   "This is log with color LIGHTGREEN");
+console.log(logLevel::CYAN,         "This is log with color CYAN\n\n");
 
 console.timestamp();
 
-console.report(logLevel::INFO,       "This is report with INFO");
-console.report(logLevel::WARNING,    "This is report with WARNING");
-console.report(logLevel::ERR,        "This is report with ERR\n\n");
+console.report(logLevel::INFO,      "This is report with INFO");
+console.report(logLevel::WARNING,   "This is report with WARNING");
+console.report(logLevel::ERR,       "This is report with ERR\n\n");
 
 
 DWORD hex = 0xffff;
@@ -46,4 +46,5 @@ console.logWithTitle(logLevel::LIGHTMAGENTA, "Title", "0x%x", hex);
 
 console.showCursor(false);
 ```
-![image](https://github.com/user-attachments/assets/1fbef373-678e-4184-8272-a21df753c4aa)
+![image](https://github.com/user-attachments/assets/0885167e-3c0d-4320-8ec1-bbbf261b32aa)
+
