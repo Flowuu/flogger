@@ -17,10 +17,10 @@
 
 ## Installation
 
-Simply include the `flogger.h` header file in your project:
+Simply include the `flogger.hpp` header file in your project:
 
 ```cpp
-#include "flogger.h"
+#include "flogger.hpp"
 
 fLog logger("Debug Win");
 
