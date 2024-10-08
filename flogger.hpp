@@ -9,31 +9,32 @@
 #include <ctime>
 
 enum class logLevel {
-    INFO            = 11,
-    WARNING         = 6,
-    ERR             = 4,
-    BLACK           = 0,
-    BLUE            = 1,
-    GREEN           = 2,
-    CYAN            = 3,
-    RED             = 4,
-    MAGENTA         = 5,
-    ORANGE          = 6,
-    LIGHTGRAY       = 7,
-    DARKGRAY        = 8,
-    LIGHTBLUE       = 9,
-    LIGHTGREEN      = 10,
-    LIGHTCYAN       = 11,
-    LIGHTRED        = 12,
-    LIGHTMAGENTA    = 13,
-    YELLOW          = 14,
-    WHITE           = 15
+    INFO = 11,
+    WARNING = 6,
+    ERR = 4,
+    BLACK = 0,
+    BLUE = 1,
+    GREEN = 2,
+    CYAN = 3,
+    RED = 4,
+    MAGENTA = 5,
+    ORANGE = 6,
+    LIGHTGRAY = 7,
+    DARKGRAY = 8,
+    LIGHTBLUE = 9,
+    LIGHTGREEN = 10,
+    LIGHTCYAN = 11,
+    LIGHTRED = 12,
+    LIGHTMAGENTA = 13,
+    YELLOW = 14,
+    WHITE = 15
 };
 
 class fLog {
 
 private:
     FILE* filePointer = nullptr;
+    bool timestampToggle = false;
 
     void resetColor() {
         setColor(logLevel::WHITE);
@@ -90,7 +91,8 @@ public:
     }
 
     void log(const char* format, ...) {
-        printTimestamp();
+        if(timestampToggle)
+            printTimestamp();
 
         va_list args;
         va_start(args, format);
@@ -104,8 +106,10 @@ public:
     }
 
     void log(logLevel level, const char* format, ...) {
+        if (timestampToggle)
+            printTimestamp();
+
         setColor(level);
-        printTimestamp();
 
         va_list args;
         va_start(args, format);
@@ -119,8 +123,11 @@ public:
     }
 
     void logWithTitle(logLevel level, const char* title, const char* format, ...) {
+        if (timestampToggle)
+            printTimestamp();
+
         setColor(level);
-        printTimestamp();
+
         std::cout << "|" << title << "| ";
         resetColor();
 
@@ -138,9 +145,9 @@ public:
         const char* title = nullptr;
 
         switch (level) {
-        case logLevel::INFO:    title = "Info"; break;
+        case logLevel::INFO:    title = "Info   "; break;
         case logLevel::WARNING: title = "Warning"; break;
-        case logLevel::ERR:     title = "Error"; break;
+        case logLevel::ERR:     title = "Error  "; break;
         }
 
         logWithTitle(level, title, format);
@@ -153,6 +160,10 @@ public:
         GetConsoleCursorInfo(consoleHandle, &cursorInfo);
         cursorInfo.bVisible = show;
         SetConsoleCursorInfo(consoleHandle, &cursorInfo);
+    }
+
+    void timestamp() {
+        timestampToggle =! timestampToggle;
     }
 };
 
