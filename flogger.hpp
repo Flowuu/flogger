@@ -106,10 +106,10 @@ public:
     }
 
     void log(logLevel level, const char* format, ...) {
+        setColor(level);
+
         if (timestampToggle)
             printTimestamp();
-
-        setColor(level);
 
         va_list args;
         va_start(args, format);
@@ -123,10 +123,10 @@ public:
     }
 
     void logWithTitle(logLevel level, const char* title, const char* format, ...) {
+        setColor(level);
+
         if (timestampToggle)
             printTimestamp();
-
-        setColor(level);
 
         std::cout << "|" << title << "| ";
         resetColor();
