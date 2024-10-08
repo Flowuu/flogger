@@ -22,4 +22,4 @@ logger.logWithTitle(logLevel::LIGHTMAGENTA, "Title", "0x%x", hex);
 logger.showCursor(false);
 ```
 
-![image](https://github.com/user-attachments/assets/673914f3-8b1e-4245-ae8b-e99921c6eccf)
+![image](https://github.com/user-attachments/assets/a3927a8e-85ed-4036-8c31-487854268e49)
