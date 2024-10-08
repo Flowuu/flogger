@@ -19,6 +19,7 @@
 
 Simply include the `flogger.hpp` header file in your project:
 
+## Example
 ```cpp
 #include "flogger.hpp"
 
