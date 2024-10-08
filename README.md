@@ -21,29 +21,29 @@ Simply include the `flogger.hpp` header file in your project:
 
 ## Example
 ```cpp
-#include "flogger.hpp"
+fLog console("Debug Win");
 
-fLog logger("Debug Win");
+console.log("This is flogger");
 
-logger.log("This is flogger");
+console.timestamp();
 
-logger.log(logLevel::INFO,          "This is log with color INFO");
-logger.log(logLevel::WARNING,       "This is log with color WARNING");
-logger.log(logLevel::ERR,           "This is log with color ERR\n\n");
+console.log(logLevel::INFO,          "This is log with color INFO");
+console.log(logLevel::WARNING,       "This is log with color WARNING");
+console.log(logLevel::ERR,           "This is log with color ERR\n\n");
 
+console.timestamp();
 
-logger.report(logLevel::INFO,       "This is report with INFO");
-logger.report(logLevel::WARNING,    "This is report with  WARNING");
-logger.report(logLevel::ERR,        "This is report with ERR\n\n");
+console.report(logLevel::INFO,       "This is report with INFO");
+console.report(logLevel::WARNING,    "This is report with WARNING");
+console.report(logLevel::ERR,        "This is report with ERR\n\n");
 
 
 DWORD hex = 0xffff;
 
-logger.logWithTitle(logLevel::RED,          "Title", "0x%x", hex);
-logger.logWithTitle(logLevel::LIGHTRED,     "Title", "0x%x", hex);
-logger.logWithTitle(logLevel::LIGHTMAGENTA, "Title", "0x%x", hex);
+console.logWithTitle(logLevel::RED,          "Title", "0x%x", hex);
+console.logWithTitle(logLevel::LIGHTRED,     "Title", "0x%x", hex);
+console.logWithTitle(logLevel::LIGHTMAGENTA, "Title", "0x%x", hex);
 
-logger.showCursor(false);
+console.showCursor(false);
 ```
-
-![image](https://github.com/user-attachments/assets/a3927a8e-85ed-4036-8c31-487854268e49)
+![image](https://github.com/user-attachments/assets/1fbef373-678e-4184-8272-a21df753c4aa)
