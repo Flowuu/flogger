@@ -31,6 +31,7 @@ enum class logLevel {
 };
 
 class fLog {
+
 private:
     FILE* filePointer = nullptr;
 
@@ -42,6 +43,7 @@ private:
         auto now = std::chrono::system_clock::now();
         std::time_t time = std::chrono::system_clock::to_time_t(now);
         std::tm* localTime = std::localtime(&time);
+
         std::cout << "[" << std::put_time(localTime, "%H:%M:%S") << "] ";
     }
 
@@ -77,6 +79,7 @@ public:
         DWORD cells = bufferInfo.dwSize.X * bufferInfo.dwSize.Y;
 
         FillConsoleOutputCharacter(hConsole, ' ', cells, coord, &written);
+
         GetConsoleScreenBufferInfo(hConsole, &bufferInfo);
 
         SetConsoleCursorPosition(hConsole, coord);
@@ -91,8 +94,11 @@ public:
 
         va_list args;
         va_start(args, format);
+
         vprintf(format, args);
+
         va_end(args);
+
         resetColor();
         std::cout << std::endl;
     }
@@ -103,7 +109,9 @@ public:
 
         va_list args;
         va_start(args, format);
+
         vprintf(format, args);
+
         va_end(args);
 
         resetColor();
@@ -118,8 +126,11 @@ public:
 
         va_list args;
         va_start(args, format);
+
         vprintf(format, args);
+
         va_end(args);
+
         std::cout << std::endl;
     }
 
@@ -138,6 +149,7 @@ public:
     void showCursor(bool show) {
         HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
         CONSOLE_CURSOR_INFO cursorInfo;
+
         GetConsoleCursorInfo(consoleHandle, &cursorInfo);
         cursorInfo.bVisible = show;
         SetConsoleCursorInfo(consoleHandle, &cursorInfo);
