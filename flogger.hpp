@@ -31,7 +31,7 @@ enum class logLevel {
     WHITE = 15
 };
 
-class fLog {
+struct fLog {
 
 private:
     FILE* filePointer = nullptr;
@@ -167,9 +167,10 @@ public:
         SetConsoleCursorInfo(consoleHandle, &cursorInfo);
     }
 
-    void timestamp() {
-        timestampToggle = !timestampToggle;
+    void toggleTimestamp() {
+        timestampToggle =! timestampToggle;
     }
+
 };
 
 #endif
