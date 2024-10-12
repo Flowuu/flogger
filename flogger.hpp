@@ -55,6 +55,9 @@ public:
     }
 
     fLog(const char* title) : fLog() {
+        AllocConsole();
+        freopen_s(&filePointer, "CONOUT$", "w", stdout);
+
         SetConsoleTitleA(title);
     }
 
