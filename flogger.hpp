@@ -9,25 +9,26 @@
 #include <ctime>
 
 enum class logLevel {
-    INFO            = 11,
-    WARNING         = 6,
-    ERR             = 4,
-    BLACK           = 0,
-    BLUE            = 1,
-    GREEN           = 2,
-    CYAN            = 3,
-    RED             = 4,
-    MAGENTA         = 5,
-    ORANGE          = 6,
-    LIGHTGRAY       = 7,
-    DARKGRAY        = 8,
-    LIGHTBLUE       = 9,
-    LIGHTGREEN      = 10,
-    LIGHTCYAN       = 11,
-    LIGHTRED        = 12,
-    LIGHTMAGENTA    = 13,
-    YELLOW          = 14,
-    WHITE           = 15
+    Success = 10,
+    INFO = 11,
+    WARNING = 6,
+    ERR = 4,
+    BLACK = 0,
+    BLUE = 1,
+    GREEN = 2,
+    CYAN = 3,
+    RED = 4,
+    MAGENTA = 5,
+    ORANGE = 6,
+    LIGHTGRAY = 7,
+    DARKGRAY = 8,
+    LIGHTBLUE = 9,
+    LIGHTGREEN = 10,
+    LIGHTCYAN = 11,
+    LIGHTRED = 12,
+    LIGHTMAGENTA = 13,
+    YELLOW = 14,
+    WHITE = 15
 };
 
 class fLog {
@@ -54,7 +55,7 @@ public:
         freopen_s(&filePointer, "CONOUT$", "w", stdout);
     }
 
-    fLog(const char* title) : fLog() {
+    fLog(const char* title) {
         AllocConsole();
         freopen_s(&filePointer, "CONOUT$", "w", stdout);
 
@@ -94,7 +95,7 @@ public:
     }
 
     void log(const char* format, ...) {
-        if(timestampToggle)
+        if (timestampToggle)
             printTimestamp();
 
         va_list args;
@@ -151,6 +152,7 @@ public:
         case logLevel::INFO:    title = "Info   "; break;
         case logLevel::WARNING: title = "Warning"; break;
         case logLevel::ERR:     title = "Error  "; break;
+        case logLevel::Success: title = "Success"; break;
         }
 
         logWithTitle(level, title, format);
@@ -166,7 +168,7 @@ public:
     }
 
     void timestamp() {
-        timestampToggle =! timestampToggle;
+        timestampToggle = !timestampToggle;
     }
 };
 
