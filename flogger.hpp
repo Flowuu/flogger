@@ -31,7 +31,7 @@ enum class logLevel {
     WHITE = 15
 };
 
-struct fLog {
+class fLog {
 
 private:
     FILE* filePointer = nullptr;
