@@ -192,13 +192,13 @@ public:
 #endif
     }
 
-    void showCursor(bool visible) {
+    void toggleShowCursor() {
 #if !DISABLE_LOGGING
         CONSOLE_CURSOR_INFO cursorInfo;
         if (!GetConsoleCursorInfo(m_consoleHandle, &cursorInfo))
             return;
 
-        cursorInfo.bVisible = visible;
+        cursorInfo.bVisible = !cursorInfo.bVisible;
         SetConsoleCursorInfo(m_consoleHandle, &cursorInfo);
 #endif
     }
